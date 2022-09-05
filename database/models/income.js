@@ -4,7 +4,9 @@ const Income = (sequelize, DataTypes) => {
     installmentValue: DataTypes.DECIMAL,
     userId: DataTypes.INTEGER
   }, {
-    underscored: true
+    underscored: true,
+    tableName: 'Incomes',
+    timestamps: false
   });
 
   return Income;

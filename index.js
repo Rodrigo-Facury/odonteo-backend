@@ -1,5 +1,5 @@
 const express = require('express');
-const User = require('./database/models/user');
+const { User } = require('./database/models');
 const app = express();
 const PORT = process.env.PORT || 3000; 
 
@@ -8,9 +8,8 @@ app.get('/', function (req, res) {
 });
 
 app.get('/users', async function (req, res) {
-  // const users = await User.findAll();
-  // res.send(JSON.stringify(users));
-  res.send('olá');
+  const users = await User.findAll();
+  res.send(JSON.stringify(users));
 })
 
 app.listen(PORT, () => console.log(`ouvindo na porta ${PORT}`));

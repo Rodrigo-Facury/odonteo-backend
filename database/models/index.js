@@ -1,8 +1,10 @@
 'use strict';
+require('dotenv').config();
 
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
+const url = require('node:url');
 const basename = path.basename(__filename);
 const config = {
   dialect: 'postgres',
