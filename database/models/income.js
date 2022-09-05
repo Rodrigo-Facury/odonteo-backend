@@ -1,7 +1,8 @@
 const Income = (sequelize, DataTypes) => {
   const Income = sequelize.define("Income", {
     dates: DataTypes.STRING,
-    installmentValues: DataTypes.DECIMAL,
+    installmentValue: DataTypes.DECIMAL,
+    userId: DataTypes.INTEGER
   }, {
     underscored: true
   });
