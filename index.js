@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 
 app.get('/users', async function (req, res) {
   const users = await User.findAll();
-  res.send(users);
+  res.send(JSON.stringify(users));
 })
 
 app.listen(PORT, () => console.log(`ouvindo na porta ${PORT}`));
