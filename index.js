@@ -8,8 +8,9 @@ app.get('/', function (req, res) {
 });
 
 app.get('/users', async function (req, res) {
-  const users = await User.findAll();
-  res.send(JSON.stringify(users));
+  // const users = await User.findAll();
+  // res.send(JSON.stringify(users));
+  res.send('olá');
 })
 
 app.listen(PORT, () => console.log(`ouvindo na porta ${PORT}`));
