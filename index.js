@@ -8,7 +8,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/users', async function (req, res) {
-  const users = User.findAll();
+  const users = await User.findAll();
   res.send(users);
 })
 
