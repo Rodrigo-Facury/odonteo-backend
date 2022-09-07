@@ -4,7 +4,6 @@ const User = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     password: DataTypes.STRING,
   }, {
-    underscored: true,
     tableName: 'Users',
     timestamps: false
   });
