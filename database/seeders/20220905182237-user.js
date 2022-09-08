@@ -4,8 +4,8 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   up: async (queryInterface, _Sequelize) => {
-    // const salt = await bcrypt.genSalt(10);
-    const password = await bcrypt.hash(process.env.ERICAS_PASSWORD);
+    const salt = await bcrypt.genSalt(10);
+    const password = await bcrypt.hash(process.env.ERICAS_PASSWORD, salt);
 
     return queryInterface.bulkInsert('Users',
       [

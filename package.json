@@ -12,7 +12,8 @@
     "seed-down-all": "heroku run npx sequelize-cli db:seed:undo:all",
     "migrate": "heroku run npx sequelize-cli db:migrate",
     "migrate-down": "heroku run npx sequelize-cli db:migrate:undo",
-    "migrate-down-all": "heroku run npx sequelize-cli db:migrate:undo:all"
+    "migrate-down-all": "heroku run npx sequelize-cli db:migrate:undo:all",
+    "restore-db": "npm run migrate-down-all && npm run migrate && npm run seed-all"
   },
   "repository": {
     "type": "git",

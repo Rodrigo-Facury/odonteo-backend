@@ -4,18 +4,18 @@ const { User: userModule } = require('../../../database/models');
 async function login(req, res, next) {
   try {
     const { body: { email, password } } = req;
-    // const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(password);
-
+    
     const user = await userModule.findAll({
       where: {
-        email,
-        password: hashedPassword
-      },
-      attributes: ['id', 'username', 'email']
+        email
+      }
     });
+    
+    const correctPassword = await bcrypt.compare(password, user.password);
 
-    if (user.length === 0) {
+    delete user['password'];
+    
+    if (user.length === 0 || !correctPassword) {
       return res.status(404).json({ message: 'Usuário ou senha incorretos.' });
     }
 
