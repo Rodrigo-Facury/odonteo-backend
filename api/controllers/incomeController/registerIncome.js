@@ -5,12 +5,13 @@ async function registerIncome(req, res, next) {
     const { income } = req.body;
     const stringigiedDates = JSON.stringify(income.dates);
     income.dates = stringigiedDates;
+
     const createdIncome = await incomeModule.create(income);
 
-    return res.status(201).json(createdIncome);
+    return res.status(201).json({ createdIncome, message: 'Registro efetuado com sucesso!' });
 
   } catch(err) {
-    next(err);
+    return next(err);
   }
 }
 
