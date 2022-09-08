@@ -3,8 +3,8 @@ const { Income: incomeModule } = require('../../../database/models');
 async function registerIncome(req, res, next) {
   try {
     const { income } = req.body;
-    const stringigiedDates = JSON.stringify(income.dates);
-    income.dates = stringigiedDates;
+    const stringifiedDates = JSON.stringify(income.dates);
+    income.dates = stringifiedDates;
 
     const createdIncome = await incomeModule.create(income);
 

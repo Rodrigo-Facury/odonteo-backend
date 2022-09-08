@@ -9,7 +9,7 @@ async function getIncomeByUserId(req, res, next) {
         userId
       },
       attributes: ['dates', 'installmentValue']
-    });;
+    });
 
     return res.status(200).json({ income });
 
