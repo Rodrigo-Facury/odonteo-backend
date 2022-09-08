@@ -10,16 +10,21 @@ async function login(req, res, next) {
         email
       }
     });
-    
-    const correctPassword = await bcrypt.compare(password, user.password);
 
-    delete user['password'];
+    let correctPassword;
+
+    if (user[0]) {
+      correctPassword = await bcrypt.compare(password, user[0].password);
+  
+      delete user[0].dataValues.password;
+    }
     
-    if (user.length === 0 || !correctPassword) {
+    
+    if (!correctPassword) {
       return res.status(404).json({ message: 'Usuário ou senha incorretos.' });
     }
 
-    return res.status(200).json({ user, message: 'Login efetuado com sucesso!' });
+    return res.status(200).json({ user: user[0], message: 'Login efetuado com sucesso!' });
 
   } catch(err) {
     return next(err);
