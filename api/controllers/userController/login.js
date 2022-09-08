@@ -21,7 +21,7 @@ async function login(req, res, next) {
     
     
     if (!correctPassword) {
-      return res.status(404).json({ message: 'Usuário ou senha incorretos.' });
+      return res.status(401).json({ message: 'Usuário ou senha incorretos.' });
     }
 
     return res.status(200).json({ user: user[0], message: 'Login efetuado com sucesso!' });
