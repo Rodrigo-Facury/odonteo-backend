@@ -25,7 +25,7 @@ async function login(req, res, next) {
       return res.status(401).json({ message: 'Usuário ou senha incorretos.' });
     }
 
-    const token = createToken(user[0]);
+    const token = createToken(user[0].dataValues);
 
     return res.status(200).json({ user: user[0], token, message: 'Login efetuado com sucesso!' });
 
