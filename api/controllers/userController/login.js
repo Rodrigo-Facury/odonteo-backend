@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt');
 const { User: userModule } = require('../../../database/models');
+const createToken = require('../../services/createToken');
 
 async function login(req, res, next) {
   try {
@@ -24,7 +25,9 @@ async function login(req, res, next) {
       return res.status(401).json({ message: 'Usuário ou senha incorretos.' });
     }
 
-    return res.status(200).json({ user: user[0], message: 'Login efetuado com sucesso!' });
+    const token = createToken(user[0]);
+
+    return res.status(200).json({ user: user[0], token, message: 'Login efetuado com sucesso!' });
 
   } catch(err) {
     return next(err);
