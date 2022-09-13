@@ -6,7 +6,7 @@ async function validateToken(req, res, next) {
   const token = req.headers.authorization;
 
   if (!token) {
-    return res.status(403).json({ message: 'Usuário não autorizado.' });
+    return res.status(401).json({ message: 'Usuário não autorizado.' });
   }
 
   try {
