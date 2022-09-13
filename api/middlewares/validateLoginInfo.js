@@ -1,4 +1,4 @@
-export default function validateLoginInfo(req, res, next) {
+function validateLoginInfo(req, res, next) {
   try {
     const { body: { email, password } } = req;
 
@@ -34,3 +34,5 @@ export default function validateLoginInfo(req, res, next) {
     return next(err);
   }
 }
+
+module.exports = validateLoginInfo;
