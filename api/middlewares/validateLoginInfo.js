@@ -28,6 +28,8 @@ export default function validateLoginInfo(req, res, next) {
       return res.status(400).json({ message: 'Email ou Senha em formato incorreto.' })
     }
 
+    next();
+
   } catch(err) {
     return next(err);
   }
